@@ -1,4 +1,4 @@
-from feature import Feature
+from .feature import Feature
 from adaboost.classifiers import Linear
 import numpy as np
 
@@ -13,7 +13,7 @@ class Simple(Feature):
 
     @staticmethod
     def discover_features(data):
-        return [Simple(i) for i in xrange(0, data.shape[1])]
+        return [Simple(i) for i in range(0, data.shape[1])]
 
     def extract(self, data):
         return data[:, self.column]
@@ -23,4 +23,3 @@ class Simple(Feature):
 
     def describe(self):
         return 'Column ' + str(self.column)
-

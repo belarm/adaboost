@@ -1,3 +1,3 @@
 #!/usr/bin/env python
 
-from linear import Linear
+from .linear import Linear

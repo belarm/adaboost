@@ -1,5 +1,5 @@
-from classifier import Classifier
-from adaboost import utilities
+from .classifier import Classifier
+from .. import utilities
 import numpy as np
 
 
@@ -31,7 +31,8 @@ class Linear(Classifier):
 
         # make paired lists of processed data, actual classification and weights
         lst = [(x, actual[i, 0], weights[i, 0]) for i, x in enumerate(processed_data)]
-        lst.sort(cmp=self.get_sort_func(), key=lambda entry: entry[0])
+        # lst.sort(cmp=self.get_sort_func(), key=lambda entry: entry[0])
+        lst.sort(key=lambda entry: entry[0])
 
         # figure out initial precision
         best_threshold = lst[0][0] - 1e-5
@@ -51,7 +52,7 @@ class Linear(Classifier):
                 continue
 
             # advance boundary
-            for j in xrange(last_boundary, boundary):
+            for j in range(last_boundary, boundary):
                 if 0 < lst[j][1]:
                     err += lst[j][2]
                 else:

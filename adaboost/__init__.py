@@ -6,4 +6,4 @@ __author__ = 'nathan'
 Dependency: numpy
 """
 
-from algorithm import AdaBoost
+from .algorithm import AdaBoost
